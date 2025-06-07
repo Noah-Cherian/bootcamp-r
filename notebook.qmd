@@ -1,1 +1,7 @@
-## My First notebook
+# My First notebook
+
+# Upon startup, make sure to reload the library
+```{r}
+library(gapminder)   # loads the dataset
+head(gapminder, 3)
+```
