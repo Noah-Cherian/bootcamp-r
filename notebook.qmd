@@ -3,5 +3,28 @@
 # Upon startup, make sure to reload the library
 ```{r}
 library(gapminder)   # loads the dataset
-head(gapminder, 3)
+library(dplyr)
+library(tidyverse)
 ```
+
+## Data preparation
+```{r}
+gm <- readr::read_csv("data/raw/gapminder_raw.csv")
+dim(gm)             # rows × cols
+glimpse(gm)
+## Mutation
+gm <- gm %>%
+  mutate(log_gdp = log10(gdpPercap), gdp_billions = gdpPercap * pop / 1e9)
+# makes a logGDP column and a gdp in billions column
+```
+
+## Writing the cleaned up file
+
+```{r}
+readr::write_csv(gm, "data/derived/gapminder_clean.csv")
+
+```
+
+
+
+
